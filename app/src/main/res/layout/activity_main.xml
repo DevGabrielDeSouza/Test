@@ -14,7 +14,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="facebook"
+        android:text="explosion"
         android:textSize="65sp"
         android:textColor="#ffffff"
         android:layout_marginTop="39dp"
@@ -107,7 +107,8 @@
         android:layout_alignLeft="@+id/emailText"
         android:layout_alignStart="@+id/editText2"
         android:layout_marginTop="60dp"
-        android:layout_alignRight="@+id/emailText" />
+        android:layout_alignRight="@+id/editText2"
+        android:layout_alignEnd="@+id/editText2" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -140,9 +141,10 @@
         android:layout_marginTop="15dp"
         android:layout_alignLeft="@+id/passText"
         android:layout_alignStart="@+id/passText"
-        android:layout_alignRight="@+id/passText"
-        android:layout_alignEnd="@+id/passText"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:layout_alignRight="@+id/editText2"
+        android:layout_alignEnd="@+id/editText2"
+        android:backgroundTint="@color/colorAccent" />
 
     <Button
         android:layout_width="wrap_content"
@@ -165,7 +167,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="35dp"
-        android:text="Sign Up for Facebook"
+        android:text="Sign Up for Unexpected"
         android:id="@+id/sign"
         android:textSize="10sp"
         android:gravity="center"
@@ -174,16 +176,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="26dp"
-        android:onClick="ChangeSceneSign" />
-
-    <ImageButton
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:id="@+id/imageButton"
-        android:src="@drawable/dica"
-        android:layout_alignTop="@+id/sign"
-        android:layout_alignRight="@+id/logButton"
-        android:layout_alignEnd="@+id/logButton" />
+        android:onClick="ChangeSceneSign"
+        android:backgroundTint="@color/colorAccent" />
 
     <TextView
         android:layout_width="wrap_content"
