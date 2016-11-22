@@ -34,7 +34,7 @@
         android:background="#ffffff"
         android:layout_alignTop="@+id/emailText"
         android:layout_alignRight="@+id/emailText"
-        android:layout_alignLeft="@+id/emailText"
+        android:layout_alignLeft="@+id/title"
         android:inputType="none"
         android:layout_alignBottom="@+id/emailText" />
 
@@ -48,7 +48,7 @@
         android:textSize="16sp"
         android:gravity="center_vertical"
         android:textColor="#a1a1a1"
-        android:layout_alignLeft="@+id/emailText"
+        android:layout_alignLeft="@+id/editText"
         android:layout_alignStart="@+id/emailText"
         android:layout_alignRight="@+id/emailText"
         android:layout_alignEnd="@+id/emailText"
@@ -75,6 +75,26 @@
         android:editable="false"
         android:layout_alignTop="@+id/confirmText"
         android:layout_alignBottom="@+id/confirmText" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:inputType="none"
+        android:ems="14"
+        android:id="@+id/editText5"
+        android:text=" Name"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        android:textColor="#a1a1a1"
+        android:layout_alignLeft="@+id/editText3"
+        android:layout_alignStart="@+id/emailText"
+        android:layout_alignRight="@+id/editText3"
+        android:layout_alignEnd="@+id/emailText"
+        android:background="#ffffff"
+        android:visibility="gone"
+        android:editable="false"
+        android:layout_alignTop="@+id/name"
+        android:layout_alignBottom="@+id/name" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -107,7 +127,7 @@
         android:layout_alignLeft="@+id/emailText"
         android:layout_alignStart="@+id/editText2"
         android:layout_marginTop="60dp"
-        android:layout_alignRight="@+id/editText2"
+        android:layout_alignRight="@+id/emailText"
         android:layout_alignEnd="@+id/editText2" />
 
     <EditText
@@ -126,6 +146,23 @@
         android:visibility="gone"
         android:layout_marginTop="60dp"
         android:layout_alignRight="@+id/passText" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textVisiblePassword"
+        android:ems="14"
+        android:id="@+id/name"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        android:textColor="#000000"
+        android:password="false"
+        android:visibility="gone"
+        android:layout_alignLeft="@+id/emailText"
+        android:layout_alignStart="@id/confirmText"
+        android:layout_alignTop="@+id/confirmText"
+        android:layout_alignRight="@+id/emailText"
+        android:layout_marginTop="60dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -156,13 +193,14 @@
         android:textColor="#ffffff"
         android:textStyle="bold"
         android:onClick="SaveLogin"
-        android:layout_below="@+id/editText3"
+        android:layout_below="@+id/name"
         android:layout_marginTop="15dp"
         android:layout_alignLeft="@+id/passText"
         android:layout_alignStart="@+id/passText"
         android:layout_alignRight="@+id/passText"
         android:layout_alignEnd="@+id/passText"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:backgroundTint="@color/colorAccent" />
 
     <Button
         android:layout_width="wrap_content"

@@ -1,8 +1,15 @@
 <resources>
     <string name="app_name">Test</string>
-    <string name="Email">Email</string>
-    <string name="Password">Password</string>
-    <string name="Login">Login</string>
+    <string name="Email">\u0020Email</string>
+    <string name="Password">\u0020Password</string>
+    <string name="Login">\u0020Login</string>
+    <string name="Name">\u0020Name</string>
+    <string name="ConfirmPassword">\u0020Confirm Password</string>
     <string name="SignFace">Sign Up for Facebook</string>
-    <string name="ConfirmPassword">Confirm Password</string>
+    <string name="title_activity_logged">LoggedActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
