@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Wrapper;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
     private EditText nameBack;
     private TextView messager;
     private boolean sign ;
+    static final String DB_URL = "http://10.10.11.62/login_server/registro_set.php";
 
     private HTTPService myService;
     private HTTPRequests.Services currService;
@@ -148,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
         {
             Toast.makeText(this, "Server connected!!", Toast.LENGTH_SHORT).show();
             buttonLogin.setEnabled(true);
+            buttonLogin.setVisibility(View.VISIBLE);
             ShowMessage("  ", false);
         } else
         {
@@ -162,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
         if(!serverResponse.toString().equals(""))
             ShowMessage(serverResponse.toString(), true);
         else
-            ShowMessage("User not found", true);
+            ShowMessage("User not found", false);
     }
 
     private void SetInterface()
@@ -319,12 +325,16 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
                     {
                         try
                         {
-                            String save = email.getText().toString() + ";" + password.getText().toString() + ";";
-                            FileOutputStream fileOut = openFileOutput("save.txt", MODE_PRIVATE);
-                            OutputStreamWriter outputWriter = new OutputStreamWriter(fileOut);
-                            outputWriter.write(save);
-                            outputWriter.close();
-                            ShowMessage("Done", true);
+                            Wrapper conn = null;
+                            String _email = email.getText().toString();
+                            String _name =  name.getText().toString();
+                            String _password =  password.getText().toString();
+                            String IQuery = "INSERT INTO `registro`(`Nome`,`Senha`,`Email`) VALUES('"+_name+"', '"+_password+"', '"+_email+"')";
+                            System.out.println(IQuery);				//STEP 3: Open a connection
+                            conn = DriverManager.getConnection(DB_URL, "localhost", "");
+                            ((Connection)conn).createStatement().execute(IQuery);
+                            ShowMessage("Done", true);//print on console
+                            //http://10.10.11.62/login_server/registro_set.php?Nome="Miiler"&Senha="123"&Email="aoisjdiao@zsdjioad.co
                         }
                         catch (Exception e)
                         {

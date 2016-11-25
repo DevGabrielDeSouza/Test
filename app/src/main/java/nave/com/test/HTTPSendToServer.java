@@ -20,9 +20,9 @@ public class HTTPSendToServer
 
     public boolean Connect()
     {
-        //final String URL_STRING = "http://10.0.2.2:8080/calculator_server/requests.php"; //Localhost
-        final String URL_STRING = "http://10.0.2.2/calculator_server/requests.php"; //Localhost
-        //final String URL_STRING = "http://192.168.0.5:8080/calculator_server/requests.php"; //Localhost
+        //final String URL_STRING = "http://defensor.16mb.com/registro.php"; //Localhost
+        //final String URL_STRING = "http://192.168.0.5:8080/calculator_server/requests.php";
+        final String URL_STRING = "http://10.10.11.62/login_server/registro_set.php"; //Localhost
 
         try
         {
@@ -46,6 +46,7 @@ public class HTTPSendToServer
 
     public Object DoPost(Map<Object, Object> map)
     {
+
         if(map.size() > 0) return Post(GetQueryString(map));
         else return Connect();
     }
