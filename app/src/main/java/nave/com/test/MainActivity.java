@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
     private EditText email;
     private EditText password;
     private EditText confirm ;
-    private EditText name ;
     private EditText emailBack;
     private EditText passwordBack ;
     private EditText confirmBack ;
@@ -174,11 +173,19 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
     }
 
     private void LoginResponse(Object serverResponse) {
-        if(!serverResponse.toString().equals(""))
+        if(serverResponse.toString().equals(email.getText().toString()+"|"+password.getText().toString()+"|")){
+            Log.e("AMARINHOOOOOOOOOOOOOOOO", serverResponse.toString());
+
+        }else {
+            ShowMessage("User or password wrong", false);
+            Log.e("CERTO:", email.getText().toString() + "|" + password.getText().toString()+"|");
+            Log.e("ERRADO: ", serverResponse.toString());
+        }
+        /*if(!serverResponse.toString().equals(""))
             //ShowMessage(serverResponse.toString(), true);
             Log.e("AMARINHOOOOOOOOOOOOOOOO", serverResponse.toString());
         else
-            ShowMessage("User not found", false);
+            ShowMessage("User not found", false);*/
     }
 
     private void SetInterface()
@@ -194,7 +201,6 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
         email = getEditText("emailText");
         password = getEditText("passText");
         confirm = getEditText("confirmText");
-        name = getEditText("name");
         messager = (TextView)findViewById(R.id.message);
         email.addTextChangedListener(new TextWatcher()
         {
@@ -244,22 +250,6 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
-        name.addTextChangedListener(new TextWatcher()
-        {
-            public void afterTextChanged(Editable s)
-            {
-                if(isEmpty(name))
-                {
-                    nameBack.setText(R.string.Name);
-                }
-                else
-                    nameBack.setText("  ");
-            }
-
-            public void beforeTextChanged(CharSequence s, int start, int count, int after){}
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {}
-        });
     }
     private EditText getEditText(String id)
     {
@@ -277,8 +267,6 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
             s.setVisibility(View.VISIBLE);
             s = (EditText) findViewById(R.id.confirmText);
             s.setVisibility(View.VISIBLE);
-            s = (EditText) findViewById(R.id.name);
-            s.setVisibility(View.VISIBLE);
             Button b = (Button)  findViewById(R.id.signButton);
             b.setVisibility(View.VISIBLE);
             b = (Button)  findViewById(R.id.logButton);
@@ -292,8 +280,6 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
             EditText s = (EditText) findViewById(R.id.editText3);
             s.setVisibility(View.GONE);
             s = (EditText) findViewById(R.id.confirmText);
-            s.setVisibility(View.GONE);
-            s = (EditText) findViewById(R.id.name);
             s.setVisibility(View.GONE);
             Button b = (Button)  findViewById(R.id.signButton);
             b.setVisibility(View.GONE);
@@ -338,7 +324,7 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
                             //conn = DriverManager.getConnection(DB_URL, "localhost", "");
                             //((Connection)conn).createStatement().execute(IQuery);
                             RegisterLogin(_name, _password);
-                            ShowMessage("Done", true);//print on console
+                            ShowMessage("Registred", true);//print on console
                             //http://10.10.11.62/login_server/registro_set.php?Nome="Miiler"&Senha="123"&Email="aoisjdiao@zsdjioad.co
                         }
                         catch (Exception e)
@@ -369,45 +355,7 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
                 try
                 {
                     Login(email.getText().toString(), password.getText().toString());
-                    /*FileInputStream fileIn = openFileInput("save.txt");
-                    InputStreamReader isr = new InputStreamReader(fileIn);
-                    BufferedReader bufferedReader = new BufferedReader(isr);
-                    StringBuilder sb = new StringBuilder();
-                    List<String> mLines = new ArrayList<>();
-                    String line;
-                    String read = "";
-                    while ((line = bufferedReader.readLine()) != null)
-                    {
-                        mLines.add(line);
-                    }
-                    for (String string: mLines)
-                    {
-                        read += string;
-                    }
-                    String[] separated = read.split(";");
-                    for (String getEmail : separated)
-                    {
-                        if(getEmail.equals(email.getText().toString()))
-                        {
-                            for (String getPass : separated)
-                            {
-                                if(getPass.equals(password.getText().toString()))
-                                {
-                                    ShowMessage("Logged", true);
-                                    break;
-                                }
-                                else
-                                {
-                                    ShowMessage("Password incorrect", false);
-                                }
-                            }
-                            break;
-                        }
-                        else
-                        {
-                            ShowMessage("Email not registered", false);
-                        }
-                    }*/
+                    ShowMessage("Logged", true);
                 }
                 catch (Exception e){ShowMessage("Error!", false);}
             }

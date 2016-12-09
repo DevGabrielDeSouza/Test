@@ -78,26 +78,6 @@
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:inputType="none"
-        android:ems="14"
-        android:id="@+id/editText5"
-        android:text=" Name"
-        android:textSize="16sp"
-        android:gravity="center_vertical"
-        android:textColor="#a1a1a1"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_alignStart="@+id/emailText"
-        android:layout_alignRight="@+id/editText3"
-        android:layout_alignEnd="@+id/emailText"
-        android:background="#ffffff"
-        android:visibility="gone"
-        android:editable="false"
-        android:layout_alignTop="@+id/name"
-        android:layout_alignBottom="@+id/name" />
-
-    <EditText
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="14"
@@ -193,7 +173,7 @@
         android:textColor="#ffffff"
         android:textStyle="bold"
         android:onClick="SaveLogin"
-        android:layout_below="@+id/name"
+        android:layout_below="@+id/confirmText"
         android:layout_marginTop="15dp"
         android:layout_alignLeft="@+id/passText"
         android:layout_alignStart="@+id/passText"
