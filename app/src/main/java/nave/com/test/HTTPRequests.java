@@ -1,5 +1,7 @@
 package nave.com.test;
 
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,8 +35,19 @@ public class HTTPRequests implements Runnable
     {
         params.clear();
         params.put("sID", Services.LOGIN.ordinal());
-        params.put("email", email);
-        params.put("pass", pass);
+        params.put("Nome", email);
+        params.put("Pass", pass);
+
+        StartThread("LoginThread");
+    }
+
+    public void RegisterLogin(String email, String pass)
+    {
+        params.clear();
+        params.put("sID", Services.REGISTRY.ordinal());
+        params.put("Nome", email);
+        params.put("Pass", pass);
+        Log.e("REGISTERRR PARAMNSSSSS", "OIjisodfjsjidofjiosdjiofjisdo");
 
         StartThread("LoginThread");
     }

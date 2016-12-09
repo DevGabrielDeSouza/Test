@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
     private EditText nameBack;
     private TextView messager;
     private boolean sign ;
-    static final String DB_URL = "http://10.10.11.62/login_server/registro_set.php";
+    static final String DB_URL = "http://10.10.11.9/login_server/Registro_Set.php";
 
     private HTTPService myService;
     private HTTPRequests.Services currService;
@@ -98,6 +98,15 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
     {
         myService.GetRequests().Login(login, pass);
         currService = HTTPRequests.Services.LOGIN;
+        pingTime = 0;
+        handler.post(this);
+    }
+
+    private void RegisterLogin(String login, String pass)
+    {
+        Log.e("TENTEI FAZER LOGN!!", "OI");
+        myService.GetRequests().RegisterLogin(login, pass);
+        currService = HTTPRequests.Services.REGISTRY;
         pingTime = 0;
         handler.post(this);
     }
@@ -166,7 +175,8 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
 
     private void LoginResponse(Object serverResponse) {
         if(!serverResponse.toString().equals(""))
-            ShowMessage(serverResponse.toString(), true);
+            //ShowMessage(serverResponse.toString(), true);
+            Log.e("AMARINHOOOOOOOOOOOOOOOO", serverResponse.toString());
         else
             ShowMessage("User not found", false);
     }
@@ -267,8 +277,6 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
             s.setVisibility(View.VISIBLE);
             s = (EditText) findViewById(R.id.confirmText);
             s.setVisibility(View.VISIBLE);
-            s = (EditText) findViewById(R.id.editText5);
-            s.setVisibility(View.VISIBLE);
             s = (EditText) findViewById(R.id.name);
             s.setVisibility(View.VISIBLE);
             Button b = (Button)  findViewById(R.id.signButton);
@@ -284,8 +292,6 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
             EditText s = (EditText) findViewById(R.id.editText3);
             s.setVisibility(View.GONE);
             s = (EditText) findViewById(R.id.confirmText);
-            s.setVisibility(View.GONE);
-            s = (EditText) findViewById(R.id.editText5);
             s.setVisibility(View.GONE);
             s = (EditText) findViewById(R.id.name);
             s.setVisibility(View.GONE);
@@ -315,24 +321,23 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
 
     public void SaveLogin(View v)
     {
-        if(!isEmpty(email) && !isEmpty(password) && !isEmpty(confirm) && !isEmpty(name))
+        if(!isEmpty(email) && !isEmpty(password) && !isEmpty(confirm))
         {
             if(isEmailValid(email.getText().toString()))
             {
                 if(confirm.getText().toString().equals(password.getText().toString()))
                 {
-                    if(isAlpha(name.getText().toString()))
-                    {
                         try
                         {
                             Wrapper conn = null;
-                            String _email = email.getText().toString();
-                            String _name =  name.getText().toString();
+                            //String _email = email.getText().toString();
+                            String _name =  email.getText().toString();
                             String _password =  password.getText().toString();
-                            String IQuery = "INSERT INTO `registro`(`Nome`,`Senha`,`Email`) VALUES('"+_name+"', '"+_password+"', '"+_email+"')";
-                            System.out.println(IQuery);				//STEP 3: Open a connection
-                            conn = DriverManager.getConnection(DB_URL, "localhost", "");
-                            ((Connection)conn).createStatement().execute(IQuery);
+                            //String IQuery = "INSERT INTO `registro`(`Nome`,`Senha`) VALUES('"+_name+"', '"+_password+"')";
+                            //System.out.println(IQuery);				//STEP 3: Open a connection
+                            //conn = DriverManager.getConnection(DB_URL, "localhost", "");
+                            //((Connection)conn).createStatement().execute(IQuery);
+                            RegisterLogin(_name, _password);
                             ShowMessage("Done", true);//print on console
                             //http://10.10.11.62/login_server/registro_set.php?Nome="Miiler"&Senha="123"&Email="aoisjdiao@zsdjioad.co
                         }
@@ -340,11 +345,6 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
                         {
                             ShowMessage("Error!", false);
                         }
-                    }
-                    else
-                    {
-                        ShowMessage("Insert a Name",false);
-                    }
                 }
                 else
                 {
@@ -420,7 +420,7 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
             ShowMessage("Fill All", false);
         }
     }
-    public boolean isAlpha(String name) {
+    /*public boolean isAlpha(String name) {
         char[] chars = name.toCharArray();
 
         for (char c : chars) {
@@ -430,7 +430,7 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
         }
 
         return true;
-    }
+    }*/
     private static final String[] OPCOES = {"Carregar Imagens",	"Exibir Imagens"	};
     private static final String[] ACOES = {"TELA_IMAGEM", "TELA_EXI"};
 }

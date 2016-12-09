@@ -22,7 +22,7 @@ public class HTTPSendToServer
     {
         //final String URL_STRING = "http://defensor.16mb.com/registro.php"; //Localhost
         //final String URL_STRING = "http://192.168.0.5:8080/calculator_server/requests.php";
-        final String URL_STRING = "http://10.10.11.62/login_server/registro_set.php"; //Localhost
+        final String URL_STRING = "http://10.10.11.9/login_server/Registro_Set.php"; //Localhost
 
         try
         {
